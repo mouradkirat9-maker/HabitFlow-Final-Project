@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "HabitFlow",
+    "slug": "habitflow-final-project",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "android": {
+      "package": "com.example.habitflow",
+      "versionCode": 1
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

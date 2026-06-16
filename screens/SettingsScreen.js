@@ -1,0 +1,7 @@
+import React from 'react';
+import {Pressable,StyleSheet,Switch,Text,View} from 'react-native';
+import Header from '../components/Header';
+import {clearUser} from '../services/storage';
+import {useTheme} from '../context/ThemeContext';
+export default function SettingsScreen({user,onBack,onLogout}){const{theme,themeName,toggleTheme}=useTheme();async function handleLogout(){await clearUser();onLogout();}return <View style={[styles.container,{backgroundColor:theme.background}]}><Header title='Settings' onBackPress={onBack}/><View style={[styles.card,{backgroundColor:theme.card}]}><Text style={[styles.label,{color:theme.text}]}>Username: {user?.username||'Learner'}</Text><Text style={[styles.label,{color:theme.text}]}>Email: {user?.email||'learner@example.com'}</Text></View><View style={[styles.row,{backgroundColor:theme.card}]}><Text style={[styles.label,{color:theme.text}]}>Dark Mode</Text><Switch value={themeName==='dark'} onValueChange={toggleTheme}/></View><Pressable style={[styles.logout,{backgroundColor:theme.primary}]} onPress={handleLogout}><Text style={styles.logoutText}>Logout</Text></Pressable></View>;}
+const styles=StyleSheet.create({container:{flex:1,padding:20},card:{padding:18,borderRadius:16,marginBottom:14},row:{padding:18,borderRadius:16,marginBottom:14,flexDirection:'row',justifyContent:'space-between'},label:{fontSize:17,fontWeight:'700'},logout:{padding:16,borderRadius:16,alignItems:'center'},logoutText:{color:'#fff',fontWeight:'900',fontSize:16}});

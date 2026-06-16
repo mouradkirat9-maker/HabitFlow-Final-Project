@@ -1,0 +1,6 @@
+import React from 'react';
+import {Image,ScrollView,StyleSheet,Text,View} from 'react-native';
+import Header from '../components/Header';
+import {useTheme} from '../context/ThemeContext';
+export default function DetailScreen({habit,onBack}){const{theme}=useTheme();return <ScrollView style={[styles.container,{backgroundColor:theme.background}]}><Header title='Habit Details' onBackPress={onBack}/><Image source={{uri:'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80'}} style={styles.image}/><View style={[styles.card,{backgroundColor:theme.card}]}><Text style={[styles.title,{color:theme.text}]}>{habit.title}</Text><Text style={[styles.meta,{color:theme.primary}]}>{habit.category} • {habit.minutes} minutes</Text><Text style={[styles.description,{color:theme.muted}]}>{habit.description}</Text><Text style={[styles.status,{color:theme.text}]}>Favorite status: {habit.favorite?'Favorite item':'Not favorite'}</Text></View></ScrollView>;}
+const styles=StyleSheet.create({container:{flex:1,padding:20},image:{width:'100%',height:220,borderRadius:20,marginBottom:18},card:{padding:20,borderRadius:20},title:{fontSize:28,fontWeight:'900'},meta:{marginTop:8,fontSize:16,fontWeight:'800'},description:{marginTop:14,fontSize:16,lineHeight:24},status:{marginTop:18,fontWeight:'800'}});
